@@ -17,7 +17,7 @@ const connectionPrams = {
 mongoose.connect(dbURL, connectionPrams).then(()=> {
     console.log('DB connected');
     app.listen(8080, ()=>{
-        console.log("listening on port ", listener.address().port);
+        console.log("Server Started");
     })
 }).catch((e)=>{console.log("Error: ", e)})
 
@@ -47,9 +47,9 @@ const schema = new mongoose.Schema({
 const blackcoffer = mongoose.model("blackcoffer", schema);
 
 app.get("/fetchall", async (req, res)=>{
-    const Item = await blackcoffer.find();    
+    const Item = await blackcoffer.find({intensity: 6});    
     console.log(Item);
-    return Item
+    res.send(Item);
     // then(function(Item){
     //     console.log(Item);
     //     res.send(JSON.stringify(Item));
