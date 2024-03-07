@@ -9,7 +9,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-const dbURL = `mongodb+srv://aumsinghal:India123$@cluster0.l5n7leq.mongodb.net/blackcoffertask?retryWrites=true&w=majority&appName=Cluster0`
+const dbURL = `mongodb+srv://rakeshkaushik004:rakesh_707@cluster0.l5n7leq.mongodb.net/blackcoffertask?retryWrites=true&w=majority&appName=Cluster0`
 const connectionPrams = {
     useNewUrlParser: true,
 }
