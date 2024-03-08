@@ -3,12 +3,54 @@ import './App.css';
 import LineGraph from './components/lineChart';
 import BarGraph from './components/barChart';
 import PieGraph from './components/pieChart';
+import { cityOccurrences, countryOccurrences, intensityOccurrences, likelihoodOccurrences, relevanceOccurrences, topics } from './data';
+
+function countOccurrences(data, field) {
+  const occurrences = {};
+  let array = [];
+  data.forEach(entry => {
+      const value = entry[field];
+      if (value in occurrences) {
+          occurrences[value]++;
+      } else {
+          occurrences[value] = 1;
+      }
+  });
+  console.log(occurrences);
+  Object.keys(occurrences).forEach(key => {
+      array.push({name: key, value: occurrences[key]});
+  });
+  return array;
+}
 
 function App() {
   const [select, setSelect] = useState(0);
+  // const [jsonData, setJsonData] = useState(null);
+  // const [intensityOccurrences, setIntensity] = useState(null);
+
+  // useEffect(() => {
+  //   fetch('jsondata.json')
+  //     .then(response => {
+  //       if (!response.ok) {
+  //           throw new Error('Network response was not ok');
+  //       }
+  //       console.log(response)
+  //     })
+  //     .then(data => {
+  //       setJsonData(data);
+  //       console.log(data)
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching the JSON file:', error);
+  //     });
+  // }, []);
+
   // useEffect(()=>{
-  //   const data = fetch("http://localhost:8080/fetchall").then(res=>console.log(res))
-  // }, [])
+  //   if(jsonData != null){
+  //     setIntensity(countOccurrences(jsonData, 'intensity'))
+  //   }
+  // }, [jsonData])
+  console.log(cityOccurrences)
   return (
     <div className="App">
       <div className='header'>
@@ -23,16 +65,16 @@ function App() {
         </div>
 
         <div className='main-area'>
-          <div className='item'><LineGraph /></div>
-          <div className='item'><BarGraph /></div>
-          <div className='item'><PieGraph /></div>
-          <div className='item'><LineGraph /></div>
-          <div className='item'><BarGraph /></div>
-          <div className='item'><PieGraph /></div>
+          <div className='item'><LineGraph data={cityOccurrences} title={"City"} /></div>
+          <div className='item'><BarGraph data={topics} title={"topics"} /></div>
+          <div className='item'><PieGraph data={intensityOccurrences} title={"Intensity"} /></div>
+          <div className='item'><LineGraph data={likelihoodOccurrences} title={"Likelihood"} /></div>
+          <div className='item'><BarGraph data={relevanceOccurrences} title={"Relevance"} /></div>
+          <div className='item'><PieGraph data={countryOccurrences} title={"country "} /></div>
         </div>
       </div>
 
-      <form className='form' method='POST' action='http://localhost:8080/postdata'>
+      {/* <form className='form' method='POST' action='http://localhost:8080/postdata'>
         <input type='text' name='end_year' id='end_year' placeholder='end year' />
         <input type='number' name='intensity' id='intensity' placeholder='intensity' />
         <input type='text' name='sector' id='sector' placeholder='sector' />
@@ -51,7 +93,7 @@ function App() {
         <input type='text' name='title' id='title' placeholder='title' />
         <input type='number' name='likelihood' id='likelihood' placeholder='likelihood' />
         <button>Submit</button>
-      </form>
+      </form> */}
     </div>
   );
 }

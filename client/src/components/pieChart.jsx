@@ -9,14 +9,15 @@ const data01 = [
   { name: 'Group F', value: 189 },
 ];
 
-export default function PieGraph() {
+export default function PieGraph({data, title}) {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <PieChart width={400} height={400}>
+      <div style={{textAlign: "center", fontSize: "1.5rem"}}>{title}</div>
+      <PieChart width={200} height={200}>
         <Pie
           dataKey="value"
           isAnimationActive={false}
-          data={data01}
+          data={data}
           cx="50%"
           cy="50%"
           outerRadius={80}

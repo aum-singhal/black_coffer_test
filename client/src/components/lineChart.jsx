@@ -45,9 +45,10 @@ const data = [
     },
   ];
   
-export default function LineGraph(){
+export default function LineGraph({data, title}){
     return (
       <ResponsiveContainer width="100%" height="100%">
+        <div style={{textAlign: "center", fontSize: "1.5rem"}} >{title}</div>
         <LineChart
           width={500}
           height={300}
@@ -64,8 +65,7 @@ export default function LineGraph(){
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>
       </ResponsiveContainer>
     );

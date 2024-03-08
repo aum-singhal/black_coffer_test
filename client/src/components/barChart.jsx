@@ -45,9 +45,10 @@ const data = [
   },
 ];
 
-export default function BarGraph(){
+export default function BarGraph({data, title}){
   return (
     <ResponsiveContainer width="100%" height="100%">
+      <div style={{textAlign: "center", fontSize: "1.5rem"}} >{title}</div>
       <BarChart
         width={500}
         height={300}
@@ -63,9 +64,7 @@ export default function BarGraph(){
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Legend />
-        <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-        <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+        <Bar dataKey="value" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
       </BarChart>
     </ResponsiveContainer>
   );
