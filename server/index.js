@@ -62,3 +62,34 @@ app.get("/fetchall", async (req, res)=>{
     //     }
     // })
 })
+
+app.post("/postdata", (req, res) => {
+    const matchDocument = {
+        end_year: req.body.end_year,
+        intensity: req.body.intensity,
+        sector:req.body.sector,
+        topic: req.body.topic,
+        insight: req.body.insight,
+        url: req.body.url,
+        region: req.body.region,
+        start_year: req.body.start_year,
+        impact: req.body.impact,
+        added: req.body.added,
+        published: req.body.published,
+        country: req.body.country, 
+        relevance: req.body.relevance,
+        pestle: req.body.pestle,
+        source: req.body.source,
+        title: req.body.title,
+        likelihood: req.body.likelihood
+    };
+
+    mongoose.connection.collection("blackcoffer").insertOne(matchDocument, function (err, result) {
+        if (err) {
+            res.status(400).send("Error inserting matches!");
+        } else {
+            console.log(`Added a new match with id ${result.insertedId}`);
+            res.status(204).send();
+        }
+    });
+})

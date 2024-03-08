@@ -31,6 +31,27 @@ function App() {
           <div className='item'><PieGraph /></div>
         </div>
       </div>
+
+      <form className='form' method='POST' action='http://localhost:8080/postdata'>
+        <input type='text' name='end_year' id='end_year' placeholder='end year' />
+        <input type='number' name='intensity' id='intensity' placeholder='intensity' />
+        <input type='text' name='sector' id='sector' placeholder='sector' />
+        <input type='text' name='topic' id='topic' placeholder='topic' />
+        <input type='text' name='insight' id='insight' placeholder='insight' />
+        <input type='text' name='url' id='url' placeholder='url' />
+        <input type='text' name='region' id='region' placeholder='region' />
+        <input type='text' name='start_year' id='start_year' placeholder='start year' />
+        <input type='text' name='impact' id='impact' placeholder='impact' />
+        <input type='text' name='added' id='added' placeholder='added' />
+        <input type='text' name='published' id='published' placeholder='published' />
+        <input type='text' name='country' id='country' placeholder='country' />
+        <input type='number' name='relevance' id='relevance' placeholder='relevance' />
+        <input type='text' name='pestle' id='pestle' placeholder='pestle' />
+        <input type='text' name='source' id='source' placeholder='source' />
+        <input type='text' name='title' id='title' placeholder='title' />
+        <input type='number' name='likelihood' id='likelihood' placeholder='likelihood' />
+        <button>Submit</button>
+      </form>
     </div>
   );
 }
